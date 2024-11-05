@@ -14,7 +14,7 @@ from conf import TOKEN_aiogram
 # db = sqlite3.connect('/home/kotov/protgekt/aiogram_bot/Database/Chat_history.db', check_same_thread=False)
 # cursor = db.cursor()
 
-# def db_table_val(titul: str, text: str):
+# def db_table_val(titul: str, text: str):P
 # 	cursor.execute('INSERT INTO db (titul, text) VALUES (?, ?, ?, ?)', (titul, text))
 # 	db.commit()
 
