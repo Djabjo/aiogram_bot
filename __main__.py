@@ -1,11 +1,11 @@
 import asyncio
 import logging
 import sys
-import sqlite3
 
-from aiogram import Bot, Dispatcher, html, types, F
+from aiogram import Bot, Dispatcher, types, F
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
+<<<<<<< HEAD
 from aiogram.fsm.context import FSMContext
 from aiogram.filters import Command 
 from aiogram.types import Message, CallbackQuery
@@ -16,25 +16,27 @@ from conf import TOKEN_aiogram
 #database
 db = sqlite3.connect('Database/Chat_history.db', check_same_thread=False)
 cursor = db.cursor()
+=======
+from handlers import questions
 
-def db_table_val(titul: str, text: str):
-	cursor.execute('INSERT INTO db (titul, text) VALUES (?, ?, ?, ?)', (titul, text))
-	db.commit()
+
+from conf import TOKEN_aiogram
+
+# #database
+# db = sqlite3.connect('/home/kotov/protgekt/aiogram_bot/Database/Chat_history.db', check_same_thread=False)
+# cursor = db.cursor()
+>>>>>>> e1a0a6f667a298614076d4d6daaf95f240610e49
+
+# def db_table_val(titul: str, text: str):
+# 	cursor.execute('INSERT INTO db (titul, text) VALUES (?, ?, ?, ?)', (titul, text))
+# 	db.commit()
 
 
 TOKEN = TOKEN_aiogram
 dp = Dispatcher()
 
-#просто отчистка чата
-async def clear(message: types.Message, bot: Bot) -> None:
-    try:
-        # Все сообщения, начиная с текущего и до первого (message_id = 0)
-        for i in range(message.message_id, 0, -1):
-            await bot.delete_message(message.from_user.id, i)
-    except TelegramBadRequest as ex:
-        if ex.message == "Bad Request: message to delete not found":
-            print("Все сообщения удалены")
 
+<<<<<<< HEAD
 #команда start основаня функция работы чата
 @dp.message(Command("start"))
 async def cmd_start(message: types.Message):
@@ -54,6 +56,19 @@ async def cmd_start(message: types.Message):
 @dp.message(F.text.lower() == "Добавить информацию в Database")
 async def history_message(message: types.Message):
     await message.reply("Ожидается ввод", reply_markup=types.ReplyKeyboardRemove)
+=======
+
+#Кнопка "Предоставить данные из Database"
+# @dp.message(F.text.lower() == "Добавить информацию в Database")
+# async def history_message(message: Message):
+#     await message.answer("Ожидание ввода...")
+#     user_text = await dp.bot.wait_for(types.Message, chat_id=message.from_user.id)
+#     print(user_text)
+#     user_text =''.join(user_text)
+#     print(user_text)
+#     db_table_val(titul=str(user_text[0]), text=str(user_text[1:]))
+#     await message.reply("Данные были добавленны в архив")
+>>>>>>> e1a0a6f667a298614076d4d6daaf95f240610e49
 
     async def process_input(message: Message):
         user_text = message.text
@@ -65,14 +80,10 @@ async def history_message(message: types.Message):
         #await call.message.edit_text(f"Данные '{user_text}' были добавлены в архив")
    
 
-#Кнопка "очистка чата /clear"
-@dp.message(F.text.lower() == "очистка чата /clear")
-async def with_clear(message: types.Message, bot: Bot):
-    await clear(message, bot)
-
 # это все для стабильно работы чата
 async def main() -> None:
     bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
+    dp.include_routers(questions.router)
     await dp.start_polling(bot)
 
 #БАЗА
