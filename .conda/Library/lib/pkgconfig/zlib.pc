@@ -1,8 +1,8 @@
-prefix=e:/Work pet project/aiogram_bot/.conda/Library
-exec_prefix=e:/Work pet project/aiogram_bot/.conda/Library
-libdir=e:/Work pet project/aiogram_bot/.conda/Library/lib
-sharedlibdir=e:/Work pet project/aiogram_bot/.conda/Library/lib
-includedir=e:/Work pet project/aiogram_bot/.conda/Library/include
+prefix=g:/Work_code/aiogram_bot/.conda/Library
+exec_prefix=g:/Work_code/aiogram_bot/.conda/Library
+libdir=g:/Work_code/aiogram_bot/.conda/Library/lib
+sharedlibdir=g:/Work_code/aiogram_bot/.conda/Library/lib
+includedir=g:/Work_code/aiogram_bot/.conda/Library/include
 
 Name: zlib
 Description: zlib compression library

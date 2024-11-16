@@ -7,7 +7,7 @@
     "vc >=14.1,<15.0a0",
     "vs2015_runtime >=14.16.27012,<15.0a0"
   ],
-  "extracted_package_dir": "C:\\Users\\vovak\\anaconda3\\pkgs\\bzip2-1.0.8-h2bbff1b_6",
+  "extracted_package_dir": "C:\\Users\\VladimirKotov\\miniconda3\\pkgs\\bzip2-1.0.8-h2bbff1b_6",
   "files": [
     "Library/bin/bzip2.dll",
     "Library/bin/bzip2.exe",
@@ -25,12 +25,12 @@
   "fn": "bzip2-1.0.8-h2bbff1b_6.conda",
   "license": "bzip2-1.0.8",
   "link": {
-    "source": "C:\\Users\\vovak\\anaconda3\\pkgs\\bzip2-1.0.8-h2bbff1b_6",
+    "source": "C:\\Users\\VladimirKotov\\miniconda3\\pkgs\\bzip2-1.0.8-h2bbff1b_6",
     "type": 1
   },
   "md5": "33e784123d565c38e68945f07b461282",
   "name": "bzip2",
-  "package_tarball_full_path": "C:\\Users\\vovak\\anaconda3\\pkgs\\bzip2-1.0.8-h2bbff1b_6.conda",
+  "package_tarball_full_path": "C:\\Users\\VladimirKotov\\miniconda3\\pkgs\\bzip2-1.0.8-h2bbff1b_6.conda",
   "paths_data": {
     "paths": [
       {

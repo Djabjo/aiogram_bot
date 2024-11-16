@@ -8,7 +8,7 @@
     "vc >=14.2,<15.0a0",
     "vs2015_runtime >=14.29.30133,<15.0a0"
   ],
-  "extracted_package_dir": "C:\\Users\\vovak\\anaconda3\\pkgs\\openssl-3.0.15-h827c3e9_0",
+  "extracted_package_dir": "C:\\Users\\VladimirKotov\\miniconda3\\pkgs\\openssl-3.0.15-h827c3e9_0",
   "files": [
     "Library/bin/c_rehash.pl",
     "Library/bin/libcrypto-3-x64.dll",
@@ -177,12 +177,12 @@
   "fn": "openssl-3.0.15-h827c3e9_0.conda",
   "license": "Apache-2.0",
   "link": {
-    "source": "C:\\Users\\vovak\\anaconda3\\pkgs\\openssl-3.0.15-h827c3e9_0",
+    "source": "C:\\Users\\VladimirKotov\\miniconda3\\pkgs\\openssl-3.0.15-h827c3e9_0",
     "type": 1
   },
   "md5": "7781aef6d9439002465f12df75789757",
   "name": "openssl",
-  "package_tarball_full_path": "C:\\Users\\vovak\\anaconda3\\pkgs\\openssl-3.0.15-h827c3e9_0.conda",
+  "package_tarball_full_path": "C:\\Users\\VladimirKotov\\miniconda3\\pkgs\\openssl-3.0.15-h827c3e9_0.conda",
   "paths_data": {
     "paths": [
       {
@@ -191,7 +191,7 @@
         "path_type": "hardlink",
         "prefix_placeholder": "C:\\\\b\\\\abs_25mqphatbo\\\\croot\\\\openssl_1725545335595\\\\_h_env",
         "sha256": "11ae56eed2ddd9a20ebd8552709e70b647f9138fa028a86173446a3065b85d54",
-        "sha256_in_prefix": "6e6b846cadbc9496dc002def522633aa0c893b83ed888eaa8c16e01e1f08b007",
+        "sha256_in_prefix": "1f269747d01409fdf3fa8e5855515a333b7b574f7e98f8999cf136c0cd77e3bf",
         "size_in_bytes": 7268
       },
       {
@@ -1230,7 +1230,7 @@
         "path_type": "hardlink",
         "prefix_placeholder": "C:/b/abs_25mqphatbo/croot/openssl_1725545335595/_h_env",
         "sha256": "ebee686ed449861ded223dcfcd8e383006bfe416dc94d7421b7d37abcac63b1c",
-        "sha256_in_prefix": "4faeacb35783c303c8cb13aee502ee0c6cf1e49d805642113a43a2fbc3032605",
+        "sha256_in_prefix": "345c9b2e9f72cf5c169811897e4532aae4376dc476fb6303b8f143a93257e69e",
         "size_in_bytes": 325
       },
       {
@@ -1239,7 +1239,7 @@
         "path_type": "hardlink",
         "prefix_placeholder": "C:/b/abs_25mqphatbo/croot/openssl_1725545335595/_h_env",
         "sha256": "2fb35188eca6da38e89d8d26198df71345d8e2fdf7f8a6fabe5d3ccb155deb40",
-        "sha256_in_prefix": "01f999cf00f91f7b5d173d7bdebab1e8d3837eb31457466ef9b438b8faf3fd96",
+        "sha256_in_prefix": "01a396a65170efaf71e9221d20f3b6220ea004582628485b337314b3eb9015ec",
         "size_in_bytes": 325
       },
       {
@@ -1248,7 +1248,7 @@
         "path_type": "hardlink",
         "prefix_placeholder": "C:/b/abs_25mqphatbo/croot/openssl_1725545335595/_h_env",
         "sha256": "6a85424f9f7d43617a5b65d9438775dabc703bbf8cc8544e218b7cd5171fb5fe",
-        "sha256_in_prefix": "9eb3f318ee5f39510b338f12d7d173a513de3626d09b53c2c2b06ffbeacff7f6",
+        "sha256_in_prefix": "18414161efa3c5d69e34ab8e28abede523fa28688cb92012d2611df19c73b9ea",
         "size_in_bytes": 280
       },
       {

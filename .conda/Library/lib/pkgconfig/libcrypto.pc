@@ -1,4 +1,4 @@
-prefix=e:/Work pet project/aiogram_bot/.conda/Library 
+prefix=g:/Work_code/aiogram_bot/.conda/Library 
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include

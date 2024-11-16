@@ -7,7 +7,7 @@
     "vc >=14.1,<15.0a0",
     "vs2015_runtime >=14.16.27012,<15.0a0"
   ],
-  "extracted_package_dir": "C:\\Users\\vovak\\anaconda3\\pkgs\\sqlite-3.45.3-h2bbff1b_0",
+  "extracted_package_dir": "C:\\Users\\VladimirKotov\\miniconda3\\pkgs\\sqlite-3.45.3-h2bbff1b_0",
   "files": [
     "Library/bin/sqlite3.dll",
     "Library/bin/sqlite3.exe",
@@ -19,12 +19,12 @@
   "fn": "sqlite-3.45.3-h2bbff1b_0.conda",
   "license": "blessing",
   "link": {
-    "source": "C:\\Users\\vovak\\anaconda3\\pkgs\\sqlite-3.45.3-h2bbff1b_0",
+    "source": "C:\\Users\\VladimirKotov\\miniconda3\\pkgs\\sqlite-3.45.3-h2bbff1b_0",
     "type": 1
   },
   "md5": "c5b3b929349655302bf811c45571da6d",
   "name": "sqlite",
-  "package_tarball_full_path": "C:\\Users\\vovak\\anaconda3\\pkgs\\sqlite-3.45.3-h2bbff1b_0.conda",
+  "package_tarball_full_path": "C:\\Users\\VladimirKotov\\miniconda3\\pkgs\\sqlite-3.45.3-h2bbff1b_0.conda",
   "paths_data": {
     "paths": [
       {

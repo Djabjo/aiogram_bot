@@ -8,7 +8,7 @@
     "vs2015_runtime >=14.27.29016,<15.0a0",
     "zlib >=1.2.13,<1.3.0a0"
   ],
-  "extracted_package_dir": "C:\\Users\\vovak\\anaconda3\\pkgs\\tk-8.6.14-h0416ee5_0",
+  "extracted_package_dir": "C:\\Users\\VladimirKotov\\miniconda3\\pkgs\\tk-8.6.14-h0416ee5_0",
   "files": [
     "Library/bin/tcl86t.dll",
     "Library/bin/tclsh.exe",
@@ -1083,12 +1083,12 @@
   "fn": "tk-8.6.14-h0416ee5_0.conda",
   "license": "TCL",
   "link": {
-    "source": "C:\\Users\\vovak\\anaconda3\\pkgs\\tk-8.6.14-h0416ee5_0",
+    "source": "C:\\Users\\VladimirKotov\\miniconda3\\pkgs\\tk-8.6.14-h0416ee5_0",
     "type": 1
   },
   "md5": "da75707c571825eb2ad0eb806710b16b",
   "name": "tk",
-  "package_tarball_full_path": "C:\\Users\\vovak\\anaconda3\\pkgs\\tk-8.6.14-h0416ee5_0.conda",
+  "package_tarball_full_path": "C:\\Users\\VladimirKotov\\miniconda3\\pkgs\\tk-8.6.14-h0416ee5_0.conda",
   "paths_data": {
     "paths": [
       {
@@ -7322,7 +7322,7 @@
         "path_type": "hardlink",
         "prefix_placeholder": "C:\\b\\abs_17sr80_iza\\croot\\tk_1714770602079\\_h_env",
         "sha256": "495d5d2b6618e255f92eaaeae67f603f687f98f8705ad4cba67d04fed64e370d",
-        "sha256_in_prefix": "e59f0497a4e6e2c7288d577c73f30d0a87ec60950073bf3cfe80e469264a23dc",
+        "sha256_in_prefix": "15d3c0a78108dca23313433166a5715d929ad02e47480e2529bb3776012e5cd2",
         "size_in_bytes": 8163
       },
       {

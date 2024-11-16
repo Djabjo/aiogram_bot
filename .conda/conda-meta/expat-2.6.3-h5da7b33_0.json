@@ -7,7 +7,7 @@
     "vc >=14.2,<15.0a0",
     "vs2015_runtime >=14.29.30133,<15.0a0"
   ],
-  "extracted_package_dir": "C:\\Users\\vovak\\anaconda3\\pkgs\\expat-2.6.3-h5da7b33_0",
+  "extracted_package_dir": "C:\\Users\\VladimirKotov\\miniconda3\\pkgs\\expat-2.6.3-h5da7b33_0",
   "files": [
     "Library/bin/expat.dll",
     "Library/bin/libexpat.dll",
@@ -29,12 +29,12 @@
   "fn": "expat-2.6.3-h5da7b33_0.conda",
   "license": "MIT",
   "link": {
-    "source": "C:\\Users\\vovak\\anaconda3\\pkgs\\expat-2.6.3-h5da7b33_0",
+    "source": "C:\\Users\\VladimirKotov\\miniconda3\\pkgs\\expat-2.6.3-h5da7b33_0",
     "type": 1
   },
   "md5": "0b0d607bdcafa9afa17671242a6deb29",
   "name": "expat",
-  "package_tarball_full_path": "C:\\Users\\vovak\\anaconda3\\pkgs\\expat-2.6.3-h5da7b33_0.conda",
+  "package_tarball_full_path": "C:\\Users\\VladimirKotov\\miniconda3\\pkgs\\expat-2.6.3-h5da7b33_0.conda",
   "paths_data": {
     "paths": [
       {

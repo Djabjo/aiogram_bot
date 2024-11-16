@@ -6,19 +6,19 @@
   "depends": [
     "vs2015_runtime >=14.40.33807"
   ],
-  "extracted_package_dir": "C:\\Users\\vovak\\anaconda3\\pkgs\\vc-14.40-h2eaa2aa_1",
+  "extracted_package_dir": "C:\\Users\\VladimirKotov\\miniconda3\\pkgs\\vc-14.40-h2eaa2aa_1",
   "files": [
     ".nonadmin"
   ],
   "fn": "vc-14.40-h2eaa2aa_1.conda",
   "license": "BSD-3-Clause",
   "link": {
-    "source": "C:\\Users\\vovak\\anaconda3\\pkgs\\vc-14.40-h2eaa2aa_1",
+    "source": "C:\\Users\\VladimirKotov\\miniconda3\\pkgs\\vc-14.40-h2eaa2aa_1",
     "type": 1
   },
   "md5": "17cff96ab79812e3d26cd65fa5e70088",
   "name": "vc",
-  "package_tarball_full_path": "C:\\Users\\vovak\\anaconda3\\pkgs\\vc-14.40-h2eaa2aa_1.conda",
+  "package_tarball_full_path": "C:\\Users\\VladimirKotov\\miniconda3\\pkgs\\vc-14.40-h2eaa2aa_1.conda",
   "paths_data": {
     "paths": [],
     "paths_version": 1

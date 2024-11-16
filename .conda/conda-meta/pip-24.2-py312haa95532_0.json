@@ -8,7 +8,7 @@
     "setuptools",
     "wheel"
   ],
-  "extracted_package_dir": "C:\\Users\\vovak\\anaconda3\\pkgs\\pip-24.2-py312haa95532_0",
+  "extracted_package_dir": "C:\\Users\\VladimirKotov\\miniconda3\\pkgs\\pip-24.2-py312haa95532_0",
   "files": [
     "Lib/site-packages/pip-24.2.dist-info/AUTHORS.txt",
     "Lib/site-packages/pip-24.2.dist-info/INSTALLER",
@@ -870,12 +870,12 @@
   "fn": "pip-24.2-py312haa95532_0.conda",
   "license": "MIT",
   "link": {
-    "source": "C:\\Users\\vovak\\anaconda3\\pkgs\\pip-24.2-py312haa95532_0",
+    "source": "C:\\Users\\VladimirKotov\\miniconda3\\pkgs\\pip-24.2-py312haa95532_0",
     "type": 1
   },
   "md5": "cdc7bc1beec1fca9232399b7ce5c579a",
   "name": "pip",
-  "package_tarball_full_path": "C:\\Users\\vovak\\anaconda3\\pkgs\\pip-24.2-py312haa95532_0.conda",
+  "package_tarball_full_path": "C:\\Users\\VladimirKotov\\miniconda3\\pkgs\\pip-24.2-py312haa95532_0.conda",
   "paths_data": {
     "paths": [
       {

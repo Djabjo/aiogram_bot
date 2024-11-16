@@ -4,7 +4,7 @@
   "channel": "https://repo.anaconda.com/pkgs/main/win-64",
   "constrains": [],
   "depends": [],
-  "extracted_package_dir": "C:\\Users\\vovak\\anaconda3\\pkgs\\vs2015_runtime-14.40.33807-h98bb1dd_1",
+  "extracted_package_dir": "C:\\Users\\VladimirKotov\\miniconda3\\pkgs\\vs2015_runtime-14.40.33807-h98bb1dd_1",
   "files": [
     "Library/bin/api-ms-win-core-console-l1-1-0.dll",
     "Library/bin/api-ms-win-core-console-l1-2-0.dll",
@@ -125,12 +125,12 @@
   "fn": "vs2015_runtime-14.40.33807-h98bb1dd_1.conda",
   "license": "",
   "link": {
-    "source": "C:\\Users\\vovak\\anaconda3\\pkgs\\vs2015_runtime-14.40.33807-h98bb1dd_1",
+    "source": "C:\\Users\\VladimirKotov\\miniconda3\\pkgs\\vs2015_runtime-14.40.33807-h98bb1dd_1",
     "type": 1
   },
   "md5": "eb3566bfee017cb6cf82bd7c41441586",
   "name": "vs2015_runtime",
-  "package_tarball_full_path": "C:\\Users\\vovak\\anaconda3\\pkgs\\vs2015_runtime-14.40.33807-h98bb1dd_1.conda",
+  "package_tarball_full_path": "C:\\Users\\VladimirKotov\\miniconda3\\pkgs\\vs2015_runtime-14.40.33807-h98bb1dd_1.conda",
   "paths_data": {
     "paths": [
       {

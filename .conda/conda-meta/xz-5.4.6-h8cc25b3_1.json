@@ -7,7 +7,7 @@
     "vc >=14.1,<15.0a0",
     "vs2015_runtime >=14.16.27012,<15.0a0"
   ],
-  "extracted_package_dir": "C:\\Users\\vovak\\anaconda3\\pkgs\\xz-5.4.6-h8cc25b3_1",
+  "extracted_package_dir": "C:\\Users\\VladimirKotov\\miniconda3\\pkgs\\xz-5.4.6-h8cc25b3_1",
   "files": [
     "Library/bin/liblzma.dll",
     "Library/bin/lzcat.exe",
@@ -42,12 +42,12 @@
   "fn": "xz-5.4.6-h8cc25b3_1.conda",
   "license": "LGPL-2.1-or-later and GPL-2.0-or-later and 0BSD",
   "link": {
-    "source": "C:\\Users\\vovak\\anaconda3\\pkgs\\xz-5.4.6-h8cc25b3_1",
+    "source": "C:\\Users\\VladimirKotov\\miniconda3\\pkgs\\xz-5.4.6-h8cc25b3_1",
     "type": 1
   },
   "md5": "cd89b06b0e59712386f00a41fb2dec32",
   "name": "xz",
-  "package_tarball_full_path": "C:\\Users\\vovak\\anaconda3\\pkgs\\xz-5.4.6-h8cc25b3_1.conda",
+  "package_tarball_full_path": "C:\\Users\\VladimirKotov\\miniconda3\\pkgs\\xz-5.4.6-h8cc25b3_1.conda",
   "paths_data": {
     "paths": [
       {
