@@ -78,7 +78,7 @@ async def credo_fio(message: Message, state: FSMContext):
     login = FIO_en[0][0].lower() + "." + FIO_en[1].lower()     
     pas = pass_generation()
     await message.answer(
-        f"Имя фамилия на английском {FIO_en[0]} {FIO_en[1]}\n"
+        f"Имя фамилия на английском <code>{name_data}</code>\n"
         f"\n"
         f"#mail\n"
         f"url:  <code>https://passport.yandex.ru/auth</code>\n"
