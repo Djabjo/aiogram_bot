@@ -73,25 +73,26 @@ async def credo_fio(message: Message, state: FSMContext):
     await state.update_data(name=message.text)
     global name_data
     name_data = message.text
-    FIO_en = (transliterate(name_data))
+    name_data = str((transliterate(name_data)))
+    FIO_en = name_data.split(" ")
     login = FIO_en[0][0].lower() + "." + FIO_en[1].lower()     
     pas = pass_generation()
     await message.answer(
         f"Имя фамилия на английском {FIO_en[0]} {FIO_en[1]}\n"
         f"\n"
         f"#wiki\n"
-        f"url:  https://passport.yandex.ru/auth\n"
-        f"mail: {login}@expasoft.com\n"
-        f"pass: {pas}\n"
+        f"url:  <code>https://passport.yandex.ru/auth</code>\n"
+        f"mail: <code>{login}@expasoft.com\n</code>"
+        f"pass: <code>{pas}</code>\n"
         f"\n"
         f"#mail\n"
-        f"url:  https://confluence.expasoft.com/ \n"
-        f"mail: {login}\n"
-        f"pass: {pas}\n"
+        f"url:  <code>https://confluence.expasoft.com/</code> \n"
+        f"mail: <code>{login}</code>\n"
+        f"pass: <code>{pas}</code>\n"
         f"\n"
         f"#gitlab\n"
-        f"url:  https://gitlab.expasoft.com\n"
-        f"mail: {login}\n"
+        f"url:  <code>https://gitlab.expasoft.com</code>\n"
+        f"mail: <code>{login}</code>\n"
         f"pass: должен прийти на корп почту\n"
         )
     await state.clear()
