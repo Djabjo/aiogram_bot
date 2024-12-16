@@ -8,14 +8,21 @@ from aiogram.fsm.context import FSMContext
 
 from keyboards.for_questions import Ministry_of_Justice_kb
 from credo_expasoft.expa_credo import transliterate, pass_generation
+
 router = Router()
 class UserData(StatesGroup):
     #костиль, переменная для cmd_password в Command("credo")
     name_fio = State()
-    #
+    # ....
     name = State()
+    orga = State()
+    location = State()
+    contacts = State()
+    side = State()
+    finmat = State()
+    period = State()
 
-@router.message(Command("start"))
+@router.message(Command("start"))  
 async def cmd_start(message: Message):
     await message.answer(
         f'Добро пожаловать, {message.from_user.first_name}\n'
@@ -88,6 +95,28 @@ async def credo_fio(message: Message, state: FSMContext):
         f"pass: должен прийти на корп почту\n"
         )
     await state.clear()
+
+@router.message(F.text.lower() == "Добавить информацию в Database")
+async def add_data_arhive(message: Message, state: FSMContext):
+    await state.set_state(UserData.name)
+    await message.answer(
+        text=f"Как я могу к вам обращаться?",
+        parse_mode=None,
+        reply_markup=types.ReplyKeyboardRemove()
+    )
+
+@router.message(UserData.name)
+async def user_name(message: Message, state: FSMContext):
+    await state.update_data(name=message.text)
+    global name_data
+    name_data = message.text
+    print(name_data)
+    await state.set_state(UserData.orga)
+    await message.answer(
+        text=f"Приятно познакомиться {message.text}.\n"
+             f"Укажите название вашей организации",
+        parse_mode=None
+    )
 
 
 #просто отчистка чата
