@@ -125,12 +125,12 @@ async def credo_fio(message: Message, state: FSMContext):
         f"\n"
         f"#wiki\n"
         f"url:  <code>https://confluence.expasoft.com/</code> \n"
-        f"mail: <code>{login}</code>\n"
+        f"login: <code>{login}</code>\n"
         f"pass: <code>{pas}</code>\n"
         f"\n"
         f"#gitlab\n"
         f"url:  <code>https://gitlab.expasoft.com</code>\n"
-        f"mail: <code>{login}</code>\n"
+        f"login: <code>{login}</code>\n"
         f"pass: должен прийти на корп почту\n"
         )
     await state.clear()
