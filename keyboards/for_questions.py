@@ -3,7 +3,7 @@ from aiogram.utils.keyboard import ReplyKeyboardBuilder
 from aiogram import types 
 
 
-### обработчик Command("data") ###
+### обработчик Command("data") 
 def Ministry_of_Justice_kb() -> ReplyKeyboardMarkup:
     kb = [
         [types.KeyboardButton(text="Предоставить данные из Database")],

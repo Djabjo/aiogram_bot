@@ -11,16 +11,8 @@ from credo_expasoft.expa_credo import transliterate, pass_generation
 
 router = Router()
 
-class UserData(StatesGroup):
-    name = State()
-    orga = State()
-    location = State()
-    contacts = State()
-    side = State()
-    finmat = State()
-    period = State()
-    
-
+#########################################################################################################    
+# Command(start)
 @router.message(Command("start"))  
 async def cmd_start(message: Message):
     await message.answer(
@@ -31,39 +23,79 @@ async def cmd_start(message: Message):
         f"/credo - генирация login, pass\n"
         f"/clear - очистка переписки\n" 
         )
+#########################################################################################################   
+
+
+#########################################################################################################
+#Command(data) работа с памятью   
+temporary_user_data_entered = []
+
+class UserData(StatesGroup):
+    tag = State()
+    topic = State()
+    text_data = State()
+
 @router.message(Command("data"))  
-async def cmd_input(message: "data"):
-    await message.answer('Доброго времяни суток',
+async def cmd_input(message: Message):
+    await message.answer(
+        f"Раздел отвечает за работу с базой данных!!!\n" 
+        f"Выбирите вариант для продолжения работы",
         reply_markup=Ministry_of_Justice_kb()
         )
     
 
-# @router.message(F.text.lower() == "Добавить информацию в Database")
-# async def add_data_archive(message: Message, state: FSMContext):
-#     await state.set_state(UserData.topic)
-#     await message.answer(
-#         text=f"как будет называтся тема ?",
-#         parse_mode=None,
-#         reply_markup=types.ReplyKeyboardRemove()
-#     )
+@router.message(F.text.lower() == "добавить информацию в database")
+async def add_data_archive(message: Message, state: FSMContext):
+    await state.set_state(UserData.tag)
+    await message.answer(
+        f"Введите тег темы",
+        reply_markup=types.ReplyKeyboardRemove()
+    )
 
-# @router.message(UserData.topic)
-# async def user_input_topic(message: Message, state: FSMContext):
-#     await state.update_data(topic=message.text)
-#     test_DB = message.text
-#     print(test_DB)
-#     await message.answer(
-#         text=f"Название темы будет {message.text}.\n"
-#              f"укажите текст который хотите добавить",
-#         parse_mode=None
-#     )
 
+@router.message(UserData.tag)
+async def tag(message: Message, state: FSMContext):
+    await state.update_data(tag=message.text)
+    global tag_data
+    tag_data = message.text
+    temporary_user_data_entered.append(tag_data)
+    await state.set_state(UserData.topic)
+    await message.answer(
+        f"Добавте тему"
+    )
+
+@router.message(UserData.topic)
+async def topic(message: Message, state: FSMContext):
+    await state.set_state(UserData.topic)
+    global topic_data
+    topic_data = message.text
+    temporary_user_data_entered.append(topic_data)
+    await state.set_state(UserData.text_data)
+    await message.answer(
+        f"Добавте текс темы"
+    )
+
+
+@router.message(UserData.text_data)
+async def text_topic(message: Message, state: FSMContext):
+    global text_data
+    text_data = message.text
+    temporary_user_data_entered.append(text_data)
+    await message.answer(
+        f"{temporary_user_data_entered}"
+    )
+
+
+    await state.clear()
+
+#########################################################################################################
 
 
 #########################################################################################################
 #для рабочих нужд, создает логины и пароли к сервисам    
 class UserCred(StatesGroup):
     name_fio = State()
+
 
 @router.message(Command("credo"))
 async def cmd_credentials(message: Message, state: FSMContext):
@@ -73,17 +105,18 @@ async def cmd_credentials(message: Message, state: FSMContext):
         parse_mode=None,
         )
 
+
 @router.message(UserCred.name_fio)
 async def credo_fio(message: Message, state: FSMContext):
-    await state.update_data(name=message.text)
-    global name_data
-    name_data = message.text
-    name_data = str((transliterate(name_data)))
-    FIO_en = name_data.split(" ")
+    await state.update_data(name_fio=message.text)
+    global FIO_name
+    FIO_name = message.text
+    FIO_name= str((transliterate(FIO_name)))
+    FIO_en = FIO_name.split(" ")
     login = FIO_en[0][0].lower() + "." + FIO_en[1].lower()     
     pas = pass_generation()
     await message.answer(
-        f"Имя фамилия на английском <code>{name_data}</code>\n"
+        f"Имя фамилия на английском <code>{FIO_name}</code>\n"
         f"\n"
         f"#mail\n"
         f"url:  <code>https://passport.yandex.ru/auth</code>\n"
@@ -104,6 +137,7 @@ async def credo_fio(message: Message, state: FSMContext):
 ###############################################################################################
 
 
+#########################################################################################################
 #очистка чата от сообщений 
 async def clear(message: types.Message, bot: Bot) -> None:
     try:
@@ -114,9 +148,8 @@ async def clear(message: types.Message, bot: Bot) -> None:
         if ex.message == "Bad Request: message to delete not found":
             print("Все сообщения удалены")
 
+
 @router.message(Command("clear"))
 async def cmd_clear(message: "clear", bot: Bot):
    await clear(message, bot)
-   
-
 #################################################################################################
