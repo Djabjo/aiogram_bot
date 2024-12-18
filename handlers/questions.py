@@ -28,8 +28,8 @@ async def cmd_start(message: Message):
         f"Я бот, Memorizer\n"
         f"/data - для работы с базой данных Memorizer\n"
         f"/credo - для создания credo сотрудников expasoft\n"
-        f"/start - начать заново"
-        f"/clear - очистка чата от сообщений" 
+        f"/start - начать заново\n"
+        f"/clear - очистка чата от сообщений\n" 
         )
 @router.message(Command("data"))  
 async def cmd_input(message: "data"):
@@ -73,7 +73,7 @@ async def cmd_credentials(message: Message, state: FSMContext):
         parse_mode=None,
         )
 
-@router.message(UserData.name_fio)
+@router.message(UserCred.name_fio)
 async def credo_fio(message: Message, state: FSMContext):
     await state.update_data(name=message.text)
     global name_data
