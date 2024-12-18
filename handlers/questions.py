@@ -8,7 +8,7 @@ from aiogram.fsm.context import FSMContext
 
 from keyboards.for_questions import Ministry_of_Justice_kb
 from credo_expasoft.expa_credo import transliterate, pass_generation
-
+from Database.database_cod import  db_table_val
 router = Router()
 
 #########################################################################################################    
@@ -20,7 +20,7 @@ async def cmd_start(message: Message):
         f'Добро пожаловать, {message.from_user.first_name}\n'
         f"/start - начать заново\n"
         f"/data - для работы с базой данных Memorizer\n"
-        f"/credo - генирация login, pass\n"
+        f"/credo - генирация mail, login, pass\n"
         f"/clear - очистка переписки\n" 
         )
 #########################################################################################################   
@@ -28,7 +28,7 @@ async def cmd_start(message: Message):
 
 #########################################################################################################
 #Command(data) работа с памятью   
-temporary_user_data_entered = []
+temporary_user_data_entered = ["","",""]
 
 class UserData(StatesGroup):
     tag = State()
@@ -38,7 +38,7 @@ class UserData(StatesGroup):
 @router.message(Command("data"))  
 async def cmd_input(message: Message):
     await message.answer(
-        f"Раздел отвечает за работу с базой данных!!!\n" 
+        f"Раздел отвечает за работу с базой данных\n" 
         f"Выбирите вариант для продолжения работы",
         reply_markup=Ministry_of_Justice_kb()
         )
@@ -58,7 +58,7 @@ async def tag(message: Message, state: FSMContext):
     await state.update_data(tag=message.text)
     global tag_data
     tag_data = message.text
-    temporary_user_data_entered.append(tag_data)
+    temporary_user_data_entered[0] = tag_data
     await state.set_state(UserData.topic)
     await message.answer(
         f"Добавте тему"
@@ -69,7 +69,7 @@ async def topic(message: Message, state: FSMContext):
     await state.set_state(UserData.topic)
     global topic_data
     topic_data = message.text
-    temporary_user_data_entered.append(topic_data)
+    temporary_user_data_entered[1]= topic_data
     await state.set_state(UserData.text_data)
     await message.answer(
         f"Добавте текс темы"
@@ -80,9 +80,15 @@ async def topic(message: Message, state: FSMContext):
 async def text_topic(message: Message, state: FSMContext):
     global text_data
     text_data = message.text
-    temporary_user_data_entered.append(text_data)
+    temporary_user_data_entered[2] = text_data
+    id_u = message.from_user.id
+    db_table_val(id_user = id_u, 
+        tag =temporary_user_data_entered[0],
+        topic = temporary_user_data_entered[1],
+        text = temporary_user_data_entered[2]
+        )
     await message.answer(
-        f"{temporary_user_data_entered}"
+        f"данные успешно добавленны в базу"
     )
 
 
