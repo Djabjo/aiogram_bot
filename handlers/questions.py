@@ -24,12 +24,12 @@ class UserData(StatesGroup):
 @router.message(Command("start"))  
 async def cmd_start(message: Message):
     await message.answer(
-        f'Добро пожаловать, {message.from_user.first_name}\n'
         f"Я бот, Memorizer\n"
-        f"/data - для работы с базой данных Memorizer\n"
-        f"/credo - для создания credo сотрудников expasoft\n"
+        f'Добро пожаловать, {message.from_user.first_name}\n'
         f"/start - начать заново\n"
-        f"/clear - очистка чата от сообщений\n" 
+        f"/data - для работы с базой данных Memorizer\n"
+        f"/credo - генирация login, pass\n"
+        f"/clear - очистка переписки\n" 
         )
 @router.message(Command("data"))  
 async def cmd_input(message: "data"):
