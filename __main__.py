@@ -9,7 +9,7 @@ from aiogram.enums import ParseMode
 #токен
 from conf import TOKEN_aiogram
 #из папки andlers импортируем python file qуuestions
-from handlers import questions
+from handlers import hendlers_start_db, hendlers_clear, hendlers_credo
 
 TOKEN = TOKEN_aiogram
 dp = Dispatcher()
@@ -17,7 +17,9 @@ dp = Dispatcher()
 # это все для стабильно работы чата
 async def main() -> None:
     bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
-    dp.include_routers(questions.router)
+    dp.include_routers(hendlers_start_db.router)
+    dp.include_routers(hendlers_clear.router)
+    dp.include_routers(hendlers_credo.router)
     await dp.start_polling(bot)
 
 #БАЗА
