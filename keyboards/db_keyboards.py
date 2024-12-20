@@ -1,5 +1,4 @@
 from aiogram.types import ReplyKeyboardMarkup
-from aiogram.utils.keyboard import ReplyKeyboardBuilder
 from aiogram import types 
 
 
@@ -15,4 +14,17 @@ def Ministry_of_Justice_kb() -> ReplyKeyboardMarkup:
         input_field_placeholder= 'выбирете вариант ввода'
         )
     return keyboard
-        
+
+
+#клавиатура завершения работы с добавлением данных        
+def delete_text_db() -> ReplyKeyboardMarkup:
+    kb = [
+        [types.KeyboardButton(text="Завершить работу")],
+        [types.KeyboardButton(text="Удалить запись")],
+    ]
+    keyboard = types.ReplyKeyboardMarkup(
+        selective=True,
+        keyboard=kb,
+        resize_keyboard=True
+        )
+    return keyboard

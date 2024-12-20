@@ -3,9 +3,9 @@ from aiogram.filters import Command
 from aiogram.types import Message
 from aiogram.fsm.state import StatesGroup, State
 from aiogram.fsm.context import FSMContext
+from aiogram.utils.keyboard import ReplyKeyboardBuilder
 
-
-from keyboards.db_keyboards import Ministry_of_Justice_kb
+from keyboards.db_keyboards import Ministry_of_Justice_kb, delete_text_db
 from Database.database_cod import  db_table_val
 
 
@@ -72,7 +72,7 @@ async def topic(message: Message, state: FSMContext):
     temporary_user_data_entered[1]= topic_data
     await state.set_state(UserData.text_data)
     await message.answer(
-        f"Добавте текс темы"
+        f"Добавте текст темы"
     )
 
 
@@ -88,10 +88,18 @@ async def text_topic(message: Message, state: FSMContext):
         text = temporary_user_data_entered[2]
         )
     await message.answer(
-        f"данные успешно добавленны в базу"
-    )
-
+        f"данные успешно добавленны в базу",
+        reply_markup=delete_text_db()
+        )
 
     await state.clear()
 
+@router.message(F.text.lower() == "завершить работу")
+async def finish_working_db(message: Message, state: FSMContext):
+    await state.clear()
+    await message.answer(
+        f'нажмите /start для возврата в главное меню',
+        reply_markup=types.ReplyKeyboardRemove(
+            selective=True)
+        )
 #########################################################################################################
