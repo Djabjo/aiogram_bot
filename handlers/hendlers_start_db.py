@@ -3,7 +3,6 @@ from aiogram.filters import Command
 from aiogram.types import Message
 from aiogram.fsm.state import StatesGroup, State
 from aiogram.fsm.context import FSMContext
-from aiogram.utils.keyboard import ReplyKeyboardBuilder
 
 from keyboards.db_keyboards import Ministry_of_Justice_kb, delete_text_db
 from Database.database_cod import  db_table_val, del_last_commit
@@ -23,7 +22,7 @@ async def cmd_start(message: Message):
         f"/credo - генирация mail, login, pass\n"
         f"/clear - очистка переписки\n" 
         )
-#########################################################################################################   
+
 
 
 #########################################################################################################
@@ -92,8 +91,10 @@ async def text_topic(message: Message, state: FSMContext):
         reply_markup=delete_text_db()
         )
     await state.clear()
-    
 
+
+#########################################################################################################   
+# Варианты завершения работы с дб
 @router.message(F.text.lower() == "завершить работу")
 async def finish_working_db(message: Message):
     await message.answer(
@@ -107,9 +108,8 @@ async def finish_working_db(message: Message):
 async def finish_working_db(message: Message, state: FSMContext):
     id_u = message.from_user.id
     global topic_data
-    top = topic_data
-    print(top)
-    del_last_commit(id_u, top )
+    id_u = message.from_user.id
+    del_last_commit(id_u, topic_data )
     await message.answer(
         f"последние данные были удалены, нажмите /start\n"
         f"для возврата в главное меню",
@@ -117,4 +117,4 @@ async def finish_working_db(message: Message, state: FSMContext):
             selective=True)
         )
     await state.clear()
-#########################################################################################################
+
