@@ -6,7 +6,7 @@ from aiogram.fsm.context import FSMContext
 from aiogram.utils.keyboard import ReplyKeyboardBuilder
 
 from keyboards.db_keyboards import Ministry_of_Justice_kb, delete_text_db
-from Database.database_cod import  db_table_val
+from Database.database_cod import  db_table_val, del_last_commit
 
 
 router = Router()
@@ -91,15 +91,30 @@ async def text_topic(message: Message, state: FSMContext):
         f"данные успешно добавленны в базу",
         reply_markup=delete_text_db()
         )
-
     await state.clear()
+    
 
 @router.message(F.text.lower() == "завершить работу")
-async def finish_working_db(message: Message, state: FSMContext):
-    await state.clear()
+async def finish_working_db(message: Message):
     await message.answer(
         f'нажмите /start для возврата в главное меню',
         reply_markup=types.ReplyKeyboardRemove(
             selective=True)
         )
+
+
+@router.message(F.text.lower() == "удалить запись")
+async def finish_working_db(message: Message, state: FSMContext):
+    id_u = message.from_user.id
+    global topic_data
+    top = topic_data
+    print(top)
+    del_last_commit(id_u, top )
+    await message.answer(
+        f"последние данные были удалены, нажмите /start\n"
+        f"для возврата в главное меню",
+        reply_markup=types.ReplyKeyboardRemove(
+            selective=True)
+        )
+    await state.clear()
 #########################################################################################################

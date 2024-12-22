@@ -8,3 +8,6 @@ def db_table_val(id_user: int, tag: str, topic: str, text: str):
     cursor.execute('INSERT INTO db_memory (id_user, tag, topic, text) VALUES (?, ?, ?, ?)', (id_user, tag, topic, text))
     db.commit()
 
+def del_last_commit(id_user: int, topic: str):
+    cursor.execute('DELETE FROM db_memory WHERE id_user = ? AND topic = ?', (id_user, topic))
+    db.commit()
