@@ -8,13 +8,13 @@ from aiogram.enums import ParseMode
 
 #токен
 from conf import TOKEN_aiogram
-#из папки andlers импортируем python file qуuestions
+
 from handlers import hendlers_start_db, hendlers_clear, hendlers_credo
 
 TOKEN = TOKEN_aiogram
 dp = Dispatcher()
 
-# это все для стабильно работы чата
+
 async def main() -> None:
     bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
     dp.include_routers(hendlers_start_db.router)
