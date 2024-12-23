@@ -94,7 +94,17 @@ async def text_topic(message: Message, state: FSMContext):
 
 
 #########################################################################################################   
-# Варианты завершения работы с дб
+# Обработчик вывода информации из DB
+@router.message(F.text.lower() == "предоставить данные из database")
+async def add_data_archive(message: Message, state: FSMContext):
+    await message.answer(
+        f"Введите тег темы",
+        reply_markup=types.ReplyKeyboardRemove()
+    )
+
+
+#########################################################################################################   
+# Варианты завершения работы с DB
 @router.message(F.text.lower() == "завершить работу")
 async def finish_working_db(message: Message):
     await message.answer(
