@@ -11,11 +11,13 @@ def db_table_val(id_user: int, tag: str, topic: str, text: str):
 def del_last_commit(id_user: int, topic: str):
     cursor.execute('DELETE FROM db_memory WHERE id_user = ? AND topic = ?', (id_user, topic))
     db.commit()
-id = 7469819884
 
-def tag_output(id: int):
-    cursor.execute("SELECT DISTINCT id_user, tag FROM db_memory")
-    row = cursor.fetchone()
-    print(row)
 
-tag_output(id)
+
+def tag_output(id_usert: int):
+    cursor.execute("SELECT DISTINCT tag FROM db_memory WHERE id_user = ?", (id_usert,))
+    row = cursor.fetchall()
+    tag_add = []
+    for tag in row:
+        tag_add.append(tag[0])
+    return tag_add

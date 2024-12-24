@@ -80,8 +80,8 @@ async def text_topic(message: Message, state: FSMContext):
     global text_data
     text_data = message.text
     temporary_user_data_entered[2] = text_data
-    id_u = message.from_user.id
-    db_table_val(id_user = id_u, 
+    id_user = message.from_user.id
+    db_table_val(id_user = id_user, 
         tag =temporary_user_data_entered[0],
         topic = temporary_user_data_entered[1],
         text = temporary_user_data_entered[2]
@@ -97,10 +97,12 @@ async def text_topic(message: Message, state: FSMContext):
 # Обработчик вывода информации из DB
 @router.message(F.text.lower() == "предоставить данные из database")
 async def add_data_archive(message: Message, state: FSMContext):
+    id_user = message.from_user.id
     await message.answer(
-        f"Введите тег темы",
-        reply_markup= tag_selection()
+        f"выбирете тег темы",
+        reply_markup= tag_selection(id_user)
     )
+@router.message(F.data.startswith("i"))
 
 
 #########################################################################################################   
