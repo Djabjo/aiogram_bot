@@ -4,7 +4,7 @@ from aiogram.types import Message
 from aiogram.fsm.state import StatesGroup, State
 from aiogram.fsm.context import FSMContext
 
-from keyboards.db_keyboards import Ministry_of_Justice_kb, delete_text_db
+from keyboards.db_keyboards import Ministry_of_Justice_kb, delete_text_db, tag_selection
 from Database.database_cod import  db_table_val, del_last_commit
 
 
@@ -99,7 +99,7 @@ async def text_topic(message: Message, state: FSMContext):
 async def add_data_archive(message: Message, state: FSMContext):
     await message.answer(
         f"Введите тег темы",
-        reply_markup=types.ReplyKeyboardRemove()
+        reply_markup= tag_selection()
     )
 
 

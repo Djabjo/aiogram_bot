@@ -28,3 +28,11 @@ def delete_text_db() -> ReplyKeyboardMarkup:
         resize_keyboard=True
         )
     return keyboard
+
+def tag_selection():
+    buttons = []
+    for i in range(10):
+         buttons.append(types.InlineKeyboardButton(text=str(i), callback_data=f"num_{i}"))
+         
+    keyboard = types.InlineKeyboardMarkup(inline_keyboard=buttons)
+    return keyboard
