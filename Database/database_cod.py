@@ -21,3 +21,20 @@ def tag_output(id_usert: int):
     for tag in row:
         tag_add.append(tag[0])
     return tag_add
+
+def topic_output(id_user: int, tag: str):
+    cursor.execute("SELECT * FROM db_memory WHERE id_user = ? AND tag = ?", (id_user, tag))
+    row = cursor.fetchall()
+    topic_add = []
+    for item in row:
+        topic_add.append(str(item[3]))
+    return topic_add
+
+def text_topic_output(id_user: int, topic: str):
+    cursor.execute("SELECT * FROM db_memory WHERE id_user = ? AND topic = ?", (id_user, topic))
+    row = cursor.fetchall()
+    trxt_topic_add = []
+    for item in row:
+        trxt_topic_add = item[4]
+    return trxt_topic_add
+    

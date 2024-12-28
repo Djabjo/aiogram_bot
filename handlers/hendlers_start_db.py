@@ -1,11 +1,12 @@
 from aiogram import Router, F, types
 from aiogram.filters import Command
-from aiogram.types import Message
+from aiogram.types import Message, CallbackQuery
 from aiogram.fsm.state import StatesGroup, State
 from aiogram.fsm.context import FSMContext
 
-from keyboards.db_keyboards import Ministry_of_Justice_kb, delete_text_db, tag_selection
-from Database.database_cod import  db_table_val, del_last_commit
+from keyboards.db_keyboards import Ministry_of_Justice_kb, delete_text_db, tag_selection, topic_selection
+from Database.database_cod import  db_table_val, del_last_commit, text_topic_output
+
 
 
 router = Router()
@@ -95,16 +96,44 @@ async def text_topic(message: Message, state: FSMContext):
 
 #########################################################################################################   
 # Обработчик вывода информации из DB
+
+
 @router.message(F.text.lower() == "предоставить данные из database")
 async def add_data_archive(message: Message, state: FSMContext):
-    id_user = message.from_user.id
+    global user_id
+    user_id = message.from_user.id
+    await message.answer(
+        f"Введите тег темы",
+        reply_markup=types.ReplyKeyboardRemove()
+    )
     await message.answer(
         f"выбирете тег темы",
-        reply_markup= tag_selection(id_user)
+        reply_markup =tag_selection(user_id)
     )
-@router.message(F.data.startswith("i"))
 
 
+@router.callback_query(F.data.startswith('tagdb_'))
+async def db_tag_in(call: CallbackQuery):
+    await call.answer()
+    global tag_id
+    tag_id = str(call.data.split('_')[1])
+    await call.message.answer(f"Выбрана тема тега {tag_id}",
+        reply_markup=topic_selection(str(user_id), tag_id)
+        )
+    
+
+@router.callback_query(F.data.startswith('topicdb_'))
+async def db_texttopic_output(call: CallbackQuery):
+    await call.answer()
+    global topic_id
+    topic_id = str(call.data.split('_')[1])
+    text = text_topic_output(user_id, topic_id) 
+    await call.message.answer(
+        f"по данному запросу {tag_id}, {topic_id} вывожу информацию\n"
+        f"\n"
+        f"<code>{text}</code>")
+
+    
 #########################################################################################################   
 # Варианты завершения работы с DB
 @router.message(F.text.lower() == "завершить работу")

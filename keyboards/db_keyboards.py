@@ -1,6 +1,6 @@
 from aiogram.types import ReplyKeyboardMarkup, InlineKeyboardButton, InlineKeyboardMarkup
 from aiogram import types 
-from Database.database_cod import tag_output
+from Database.database_cod import tag_output, topic_output, topic_output
 
 ### обработчик Command("data") 
 def Ministry_of_Justice_kb() -> ReplyKeyboardMarkup:
@@ -34,7 +34,17 @@ def tag_selection(id_user):
     tag = tag_output(id_user)
     buttons = []
     for i in tag:
-        button = InlineKeyboardButton(text=i, callback_data=i)
+        button = InlineKeyboardButton(text=i, callback_data=f"tagdb_{i}")
+        buttons.append(button)
+         
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[[button] for button in buttons])
+    return keyboard
+
+def topic_selection(id_user, tag):
+    topic = topic_output(int(id_user), tag)
+    buttons = []
+    for i in topic:
+        button = InlineKeyboardButton(text=i, callback_data=f"topicdb_{i}")
         buttons.append(button)
          
     keyboard = InlineKeyboardMarkup(inline_keyboard=[[button] for button in buttons])
