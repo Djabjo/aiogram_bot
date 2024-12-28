@@ -18,7 +18,6 @@ async def cmd_start(message: Message):
     await message.answer(
         f"Я бот, Memorizer\n"
         f'Добро пожаловать, {message.from_user.first_name}\n'
-        f"/start - начать заново\n"
         f"/data - для работы с базой данных Memorizer\n"
         f"/credo - генирация mail, login, pass\n"
         f"/clear - очистка переписки\n" 
@@ -39,7 +38,7 @@ class UserData(StatesGroup):
 async def cmd_input(message: Message):
     await message.answer(
         f"Раздел отвечает за работу с базой данных\n" 
-        f"Выбирите вариант для продолжения работы",
+        f"Выбирите вариант для продолжения",
         reply_markup=Ministry_of_Justice_kb()
         )
     
@@ -47,6 +46,15 @@ async def cmd_input(message: Message):
 @router.message(F.text.lower() == "добавить информацию в database")
 async def add_data_archive(message: Message, state: FSMContext):
     await state.set_state(UserData.tag)
+    await message.answer(
+        f"Краткое содержание перед началом работы с добавлением данных\n"
+        f"\n"
+        f"название тега и темы не должны превышать 64бита это примерно 4-5 слов\n"
+        f"\n"
+        f"если хотите что бы текст можно было копировать, вставьте HTML код\n"
+        f"в начало пропишите code экранируя символами ⌞ ⌝  и /code экранируя символами ⌞ ⌝  в конец,/n"
+        f" места где хотите что бы текст можно было копировать"
+    )
     await message.answer(
         f"Введите тег темы",
         reply_markup=types.ReplyKeyboardRemove()
@@ -57,23 +65,38 @@ async def add_data_archive(message: Message, state: FSMContext):
 async def tag(message: Message, state: FSMContext):
     await state.update_data(tag=message.text)
     global tag_data
-    tag_data = message.text
-    temporary_user_data_entered[0] = tag_data
-    await state.set_state(UserData.topic)
-    await message.answer(
+    tag_data = message.text 
+    print(tag_data)
+    if len(tag_data.encode('utf-8')) >= 64:
+        await message.answer(
+        f"дли текста привышает допустимые параметры"
+        f"начните сначало /data"
+        )
+        await state.clear()
+    else:
+        temporary_user_data_entered[0] = tag_data
+        await state.set_state(UserData.topic)
+        await message.answer(
         f"Добавте тему"
-    )
+        )
 
 @router.message(UserData.topic)
 async def topic(message: Message, state: FSMContext):
     await state.set_state(UserData.topic)
     global topic_data
     topic_data = message.text
-    temporary_user_data_entered[1]= topic_data
-    await state.set_state(UserData.text_data)
-    await message.answer(
-        f"Добавте текст темы"
-    )
+    if len(tag_data.encode('utf-8')) >= 64:
+        await message.answer(
+        f"дли текста привышает допустимые параметры"
+        f"начните сначало /data"
+        )
+        await state.clear()
+    else:
+        temporary_user_data_entered[1]= topic_data
+        await state.set_state(UserData.text_data)
+        await message.answer(
+            f"Добавте текст темы"
+        )
 
 
 @router.message(UserData.text_data)
@@ -131,7 +154,7 @@ async def db_texttopic_output(call: CallbackQuery):
     await call.message.answer(
         f"по данному запросу {tag_id}, {topic_id} вывожу информацию\n"
         f"\n"
-        f"<code>{text}</code>")
+        f"{text}")
 
     
 #########################################################################################################   

@@ -36,7 +36,6 @@ def tag_selection(id_user):
     for i in tag:
         button = InlineKeyboardButton(text=i, callback_data=f"tagdb_{i}")
         buttons.append(button)
-         
     keyboard = InlineKeyboardMarkup(inline_keyboard=[[button] for button in buttons])
     return keyboard
 
@@ -46,6 +45,5 @@ def topic_selection(id_user, tag):
     for i in topic:
         button = InlineKeyboardButton(text=i, callback_data=f"topicdb_{i}")
         buttons.append(button)
-         
     keyboard = InlineKeyboardMarkup(inline_keyboard=[[button] for button in buttons])
     return keyboard
