@@ -67,7 +67,7 @@ async def tag(message: Message, state: FSMContext):
     global tag_data
     tag_data = message.text 
     print(tag_data)
-    if len(tag_data.encode('utf-8')) >= 64:
+    if len(tag_data.encode('utf-8')) >= 60:
         await message.answer(
         f"дли текста привышает допустимые параметры"
         f"начните сначало /data"
@@ -83,16 +83,16 @@ async def tag(message: Message, state: FSMContext):
 @router.message(UserData.topic)
 async def topic(message: Message, state: FSMContext):
     await state.set_state(UserData.topic)
-    global topic_data
-    topic_data = message.text
-    if len(tag_data.encode('utf-8')) >= 64:
+    global topic_id
+    topic_id = message.text
+    if len(tag_data.encode('utf-8')) >= 60:
         await message.answer(
         f"дли текста привышает допустимые параметры"
         f"начните сначало /data"
         )
         await state.clear()
     else:
-        temporary_user_data_entered[1]= topic_data
+        temporary_user_data_entered[1] = topic_id
         await state.set_state(UserData.text_data)
         await message.answer(
             f"Добавте текст темы"
@@ -160,7 +160,8 @@ async def db_texttopic_output(call: CallbackQuery):
     await call.message.answer(
         f"По данному запросу {tag_id}, {topic_id} вывожу информацию\n"
         f"\n"
-        f"{text}"
+        f"{text}",
+        reply_markup = delete_text_db()
         )
     await call.message.answer(
         f"вернутся в начало /start"
@@ -180,10 +181,8 @@ async def finish_working_db(message: Message):
 
 @router.message(F.text.lower() == "удалить запись")
 async def finish_working_db(message: Message, state: FSMContext):
-    id_u = message.from_user.id
-    global topic_data
-    id_u = message.from_user.id
-    del_last_commit(id_u, topic_data )
+    user_id = message.from_user.id
+    del_last_commit(user_id, topic_id )
     await message.answer(
         f"последние данные были удалены, нажмите /start\n"
         f"для возврата в главное меню",
