@@ -5,7 +5,7 @@ from aiogram.fsm.state import StatesGroup, State
 from aiogram.fsm.context import FSMContext
 
 from keyboards.db_keyboards import Ministry_of_Justice_kb, delete_text_db, tag_selection, topic_selection
-from Database.database_cod import  db_table_val, del_last_commit, text_topic_output
+from Database.database_cod import  db_table_val, del_last_commit, text_topic_output, checking_the_availability_of_data
 
 
 
@@ -119,21 +119,27 @@ async def text_topic(message: Message, state: FSMContext):
 
 #########################################################################################################   
 # Обработчик вывода информации из DB
-
-
 @router.message(F.text.lower() == "предоставить данные из database")
 async def add_data_archive(message: Message, state: FSMContext):
     global user_id
     user_id = message.from_user.id
-    await message.answer(
-        f"Введите тег темы",
+    db_inf = checking_the_availability_of_data(user_id)
+    if db_inf == []:
+        await message.answer(
+        f"В базе данных нет записей, дальнейшая работа не возможно.\n"
+        f"вернитесь в начало /data и создайте запись",
         reply_markup=types.ReplyKeyboardRemove()
-    )
-    await message.answer(
-        f"выбирете тег темы",
-        reply_markup =tag_selection(user_id)
-    )
-
+        )
+    else:
+        await message.answer(
+            f"Добро пожаловать в ващу базу {message.from_user.first_name}",
+            reply_markup=types.ReplyKeyboardRemove()
+        )
+        await message.answer(
+            f"выбирете тег темы",
+            reply_markup = tag_selection(user_id)
+        )
+        
 
 @router.callback_query(F.data.startswith('tagdb_'))
 async def db_tag_in(call: CallbackQuery):
@@ -152,10 +158,14 @@ async def db_texttopic_output(call: CallbackQuery):
     topic_id = str(call.data.split('_')[1])
     text = text_topic_output(user_id, topic_id) 
     await call.message.answer(
-        f"по данному запросу {tag_id}, {topic_id} вывожу информацию\n"
+        f"По данному запросу {tag_id}, {topic_id} вывожу информацию\n"
         f"\n"
-        f"{text}")
-
+        f"{text}"
+        )
+    await call.message.answer(
+        f"вернутся в начало /start"
+        f"\n"
+        )
     
 #########################################################################################################   
 # Варианты завершения работы с DB

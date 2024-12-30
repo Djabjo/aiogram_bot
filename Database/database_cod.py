@@ -50,5 +50,12 @@ def text_topic_output(id_user: int, topic: str):
     db.close()
     return trxt_topic_add
 
+def checking_the_availability_of_data(id_user: int):
+    db = sqlite3.connect('Database/Chat_history.db', check_same_thread=False)
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM db_memory WHERE id_user = ?", (id_user,))
+    row = cursor.fetchall()
+    db.close()
+    return row
 
-#len('your text'.encode('utf-8'))      #проверка на битность для вывода инлайн кнопки
+

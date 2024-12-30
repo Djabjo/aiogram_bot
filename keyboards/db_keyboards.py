@@ -1,5 +1,6 @@
 from aiogram.types import ReplyKeyboardMarkup, InlineKeyboardButton, InlineKeyboardMarkup
-from aiogram import types 
+from aiogram import types
+
 from Database.database_cod import tag_output, topic_output, topic_output
 
 ### обработчик Command("data") 
@@ -37,6 +38,7 @@ def tag_selection(id_user):
         button = InlineKeyboardButton(text=i, callback_data=f"tagdb_{i}")
         buttons.append(button)
     keyboard = InlineKeyboardMarkup(inline_keyboard=[[button] for button in buttons])
+    
     return keyboard
 
 def topic_selection(id_user, tag):
