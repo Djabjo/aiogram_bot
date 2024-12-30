@@ -137,25 +137,25 @@ async def add_data_archive(message: Message, state: FSMContext):
         )
         await message.answer(
             f"выбирете тег темы",
-            reply_markup = tag_selection(user_id)
+            reply_markup = tag_selection(int(user_id))
         )
         
 
-@router.callback_query(F.data.startswith('tagdb_'))
+@router.callback_query(F.data.startswith('ta_'))
 async def db_tag_in(call: CallbackQuery):
     await call.answer()
     global tag_id
     tag_id = str(call.data.split('_')[1])
-    await call.message.answer(f"Выбрана тема тега {tag_id}",
+    await call.message.answer(
+        f"Выбрана тема тега {tag_id}",
         reply_markup=topic_selection(str(user_id), tag_id)
         )
-    
 
-@router.callback_query(F.data.startswith('topicdb_'))
+@router.callback_query(F.data.startswith('to_'))
 async def db_texttopic_output(call: CallbackQuery):
     await call.answer()
     global topic_id
-    topic_id = str(call.data.split('_')[1])
+    topic_id = call.data.split('_')[1]
     text = text_topic_output(user_id, topic_id) 
     await call.message.answer(
         f"По данному запросу {tag_id}, {topic_id} вывожу информацию\n"

@@ -57,5 +57,3 @@ def checking_the_availability_of_data(id_user: int):
     row = cursor.fetchall()
     db.close()
     return row
-
-
