@@ -9,5 +9,5 @@ env.bak/
 venv.bak/
 
 __pycache__/
-/.conda
-/.vscode
+*.conda
+*.vscode
