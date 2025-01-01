@@ -10,4 +10,4 @@ venv.bak/
 
 __pycache__/
 .conda/
-*.vscode/
+.vscode/
