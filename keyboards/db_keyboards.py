@@ -16,7 +16,6 @@ def Ministry_of_Justice_kb() -> ReplyKeyboardMarkup:
         )
     return keyboard
 
-
 #клавиатура завершения работы с добавлением данных        
 def delete_text_db() -> ReplyKeyboardMarkup:
     kb = [
@@ -29,7 +28,6 @@ def delete_text_db() -> ReplyKeyboardMarkup:
         resize_keyboard=True
         )
     return keyboard
-
 
 def tag_selection(id_user):
     tag = tag_output(id_user)

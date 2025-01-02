@@ -7,15 +7,6 @@ def db_table_val(id_user: int, tag: str, topic: str, text: str):
     db.commit()
     db.close()
 
-
-def del_last_commit(id_user: int, topic: str):
-    db = sqlite3.connect('Database/Chat_history.db', check_same_thread=False)
-    cursor = db.cursor()
-    cursor.execute('DELETE FROM db_memory WHERE id_user = ? AND topic = ?', (id_user, topic))
-    db.commit()
-    db.close()
-
-
 def tag_output(id_usert: int):
     db = sqlite3.connect('Database/Chat_history.db', check_same_thread=False)
     cursor = db.cursor()
@@ -27,7 +18,6 @@ def tag_output(id_usert: int):
     db.close()
     return tag_add
     
-
 def topic_output(id_user: int, tag: str):
     db = sqlite3.connect('Database/Chat_history.db', check_same_thread=False)
     cursor = db.cursor()
@@ -57,3 +47,10 @@ def checking_the_availability_of_data(id_user: int):
     row = cursor.fetchall()
     db.close()
     return row
+
+def del_last_commit(id_user: int, topic: str):
+    db = sqlite3.connect('Database/Chat_history.db', check_same_thread=False)
+    cursor = db.cursor()
+    cursor.execute('DELETE FROM db_memory WHERE id_user = ? AND topic = ?', (id_user, topic))
+    db.commit()
+    db.close()
