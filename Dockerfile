@@ -8,4 +8,4 @@ RUN pip install --no-cache-dir -r pip_file.txt
 
 COPY . .
 
-CMD ["/bin/bash", "-c", "python bot.py"]
+CMD ["/bin/bash", "-c", "python Bot_memorizer.py"]
