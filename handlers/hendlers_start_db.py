@@ -57,7 +57,8 @@ async def add_data_archive(message: Message, state: FSMContext):
     )
     await message.answer(
         f"Введите тег темы",
-        reply_markup=types.ReplyKeyboardRemove()
+        reply_markup=types.ReplyKeyboardRemove(
+            selective=True)
     )
 
 
@@ -79,6 +80,7 @@ async def tag(message: Message, state: FSMContext):
         await message.answer(
         f"Добавте тему"
         )
+
 
 @router.message(UserData.topic)
 async def topic(message: Message, state: FSMContext):
@@ -151,6 +153,7 @@ async def db_tag_in(call: CallbackQuery):
         reply_markup=topic_selection(str(user_id), tag_id)
         )
 
+
 @router.callback_query(F.data.startswith('to_'))
 async def db_texttopic_output(call: CallbackQuery):
     await call.answer()
@@ -168,6 +171,7 @@ async def db_texttopic_output(call: CallbackQuery):
         f"\n"
         )
     
+
 #########################################################################################################   
 # Варианты завершения работы с DB
 @router.message(F.text.lower() == "завершить работу")
@@ -190,4 +194,3 @@ async def finish_working_db(message: Message, state: FSMContext):
             selective=True)
         )
     await state.clear()
-
