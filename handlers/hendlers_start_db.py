@@ -4,8 +4,8 @@ from aiogram.types import Message, CallbackQuery
 from aiogram.fsm.state import StatesGroup, State
 from aiogram.fsm.context import FSMContext
 
-from keyboards.db_keyboards import Ministry_of_Justice_kb, delete_text_db, tag_selection, topic_selection
-from Database.database_cod import  db_table_val, del_last_commit, text_topic_output, checking_the_availability_of_data
+from keyboards.db_keyboards import itial_menu_kb, completion_text_kb, tag_selection_kb, topic_selection_kb
+from Database.database_cod import  input_all_lines_db, del_last_commit_db, text_topic_output_db, checking_the_availability_db
 
 
 
@@ -39,7 +39,7 @@ async def cmd_input(message: Message):
     await message.answer(
         f"Раздел отвечает за работу с базой данных\n" 
         f"Выбирите вариант для продолжения",
-        reply_markup=Ministry_of_Justice_kb()
+        reply_markup=itial_menu_kb()
         )
     
 
@@ -67,7 +67,6 @@ async def tag(message: Message, state: FSMContext):
     await state.update_data(tag=message.text)
     global tag_data
     tag_data = message.text 
-    print(tag_data)
     if len(tag_data.encode('utf-8')) >= 60:
         await message.answer(
         f"дли текста привышает допустимые параметры"
@@ -107,14 +106,14 @@ async def text_topic(message: Message, state: FSMContext):
     text_data = message.text
     temporary_user_data_entered[2] = text_data
     id_user = message.from_user.id
-    db_table_val(id_user = id_user, 
+    input_all_lines_db(id_user = id_user, 
         tag =temporary_user_data_entered[0],
         topic = temporary_user_data_entered[1],
         text = temporary_user_data_entered[2]
         )
     await message.answer(
         f"данные успешно добавленны в базу",
-        reply_markup=delete_text_db()
+        reply_markup=completion_text_kb()
         )
     await state.clear()
 
@@ -125,7 +124,7 @@ async def text_topic(message: Message, state: FSMContext):
 async def add_data_archive(message: Message, state: FSMContext):
     global user_id
     user_id = message.from_user.id
-    db_inf = checking_the_availability_of_data(user_id)
+    db_inf = checking_the_availability_db(user_id)
     if db_inf == []:
         await message.answer(
         f"В базе данных нет записей, дальнейшая работа не возможно.\n"
@@ -139,7 +138,7 @@ async def add_data_archive(message: Message, state: FSMContext):
         )
         await message.answer(
             f"выбирете тег темы",
-            reply_markup = tag_selection(int(user_id))
+            reply_markup = tag_selection_kb(int(user_id))
         )
         
 
@@ -150,7 +149,7 @@ async def db_tag_in(call: CallbackQuery):
     tag_id = str(call.data.split('_')[1])
     await call.message.answer(
         f"Выбрана тема тега {tag_id}",
-        reply_markup=topic_selection(str(user_id), tag_id)
+        reply_markup=topic_selection_kb(str(user_id), tag_id)
         )
 
 
@@ -159,12 +158,12 @@ async def db_texttopic_output(call: CallbackQuery):
     await call.answer()
     global topic_id
     topic_id = call.data.split('_')[1]
-    text = text_topic_output(user_id, topic_id) 
+    text = text_topic_output_db(user_id, topic_id) 
     await call.message.answer(
         f"По данному запросу {tag_id}, {topic_id} вывожу информацию\n"
         f"\n"
         f"{text}",
-        reply_markup = delete_text_db()
+        reply_markup = completion_text_kb()
         )
     await call.message.answer(
         f"вернутся в начало /start"
@@ -186,7 +185,7 @@ async def finish_working_db(message: Message):
 @router.message(F.text.lower() == "удалить запись")
 async def finish_working_db(message: Message, state: FSMContext):
     user_id = message.from_user.id
-    del_last_commit(user_id, topic_id )
+    del_last_commit_db(user_id, topic_id )
     await message.answer(
         f"последние данные были удалены, нажмите /start\n"
         f"для возврата в главное меню",
