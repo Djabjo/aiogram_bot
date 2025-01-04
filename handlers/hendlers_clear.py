@@ -18,3 +18,9 @@ async def clear(message: types.Message, bot: Bot) -> None:
 @router.message(Command("clear"))
 async def cmd_clear(message: "clear", bot: Bot):
    await clear(message, bot)
+
+
+async def delete_messages(chat_id,coin_message):
+    last_messages = await bot.get_history(chat_id=chat_id, limit=coin_message)
+    last_messages.sort(key=lambda m: m.message_id, reverse=True)
+    

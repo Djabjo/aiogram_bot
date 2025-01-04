@@ -42,7 +42,6 @@ def topic_selection_kb(id_user, tag):
     topic = topic_output_db(int(id_user), tag)
     buttons = []
     for item in topic:
-        print(len(item.encode('utf-8')))
         button = InlineKeyboardButton(text=item, callback_data=f"to_{item}")
         buttons.append(button)
     keyboard = InlineKeyboardMarkup(inline_keyboard=[[button] for button in buttons])

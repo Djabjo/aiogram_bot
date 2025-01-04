@@ -4,6 +4,7 @@ from aiogram.types import Message, CallbackQuery
 from aiogram.fsm.state import StatesGroup, State
 from aiogram.fsm.context import FSMContext
 
+
 from keyboards.db_keyboards import itial_menu_kb, completion_text_kb, tag_selection_kb, topic_selection_kb
 from Database.database_cod import  input_all_lines_db, del_last_commit_db, text_topic_output_db, checking_the_availability_db
 
@@ -132,19 +133,21 @@ async def add_data_archive(message: Message, state: FSMContext):
         reply_markup=types.ReplyKeyboardRemove()
         )
     else:
-        await message.answer(
+        msg = await message.answer(
             f"Добро пожаловать в ващу базу {message.from_user.first_name}",
             reply_markup=types.ReplyKeyboardRemove()
         )
+        await msg.delete()
         await message.answer(
             f"выбирете тег темы",
             reply_markup = tag_selection_kb(int(user_id))
         )
-        
+
 
 @router.callback_query(F.data.startswith('ta_'))
 async def db_tag_in(call: CallbackQuery):
     await call.answer()
+    await call.message.edit_reply_markup()
     global tag_id
     tag_id = str(call.data.split('_')[1])
     await call.message.answer(
@@ -156,6 +159,7 @@ async def db_tag_in(call: CallbackQuery):
 @router.callback_query(F.data.startswith('to_'))
 async def db_texttopic_output(call: CallbackQuery):
     await call.answer()
+    await call.message.edit_reply_markup()
     global topic_id
     topic_id = call.data.split('_')[1]
     text = text_topic_output_db(user_id, topic_id) 
