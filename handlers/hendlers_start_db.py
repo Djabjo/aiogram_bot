@@ -133,11 +133,10 @@ async def add_data_archive(message: Message, state: FSMContext):
         reply_markup=types.ReplyKeyboardRemove()
         )
     else:
-        msg = await message.answer(
+        await message.answer(
             f"Добро пожаловать в ващу базу {message.from_user.first_name}",
             reply_markup=types.ReplyKeyboardRemove()
         )
-        await msg.delete()
         await message.answer(
             f"выбирете тег темы",
             reply_markup = tag_selection_kb(int(user_id))
