@@ -1,7 +1,7 @@
 import sqlite3
 
 def input_all_lines_db(id_user: int, tag: str, topic: str, text: str):
-    db = sqlite3.connect('Database/Chat_history.db', check_same_thread=False)
+    db = sqlite3.connect('/Database/Chat_history.db', check_same_thread=False)
     cursor = db.cursor()
     cursor.execute('INSERT INTO db_memory (id_user, tag, topic, text) VALUES (?, ?, ?, ?)', (id_user, tag, topic, text))
     db.commit()
