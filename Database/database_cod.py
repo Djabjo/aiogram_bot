@@ -8,7 +8,7 @@ def input_all_lines_db(id_user: int, tag: str, topic: str, text: str):
     db.close()
 
 def tag_output_db(id_usert: int):
-    db = sqlite3.connect('Database/Chat_history.db', check_same_thread=False)
+    db = sqlite3.connect('/Database/Chat_history.db', check_same_thread=False)
     cursor = db.cursor()
     cursor.execute("SELECT DISTINCT tag FROM db_memory WHERE id_user = ?", (id_usert,))
     row = cursor.fetchall()
@@ -19,7 +19,7 @@ def tag_output_db(id_usert: int):
     return tag_add
     
 def topic_output_db(id_user: int, tag: str):
-    db = sqlite3.connect('Database/Chat_history.db', check_same_thread=False)
+    db = sqlite3.connect('/Database/Chat_history.db', check_same_thread=False)
     cursor = db.cursor()
     cursor.execute("SELECT * FROM db_memory WHERE id_user = ? AND tag = ?", (id_user, tag))
     row = cursor.fetchall()
@@ -30,7 +30,7 @@ def topic_output_db(id_user: int, tag: str):
     return topic_add
 
 def text_topic_output_db(id_user: int, topic: str):
-    db = sqlite3.connect('Database/Chat_history.db', check_same_thread=False)
+    db = sqlite3.connect('/Database/Chat_history.db', check_same_thread=False)
     cursor = db.cursor()
     cursor.execute("SELECT * FROM db_memory WHERE id_user = ? AND topic = ?", (id_user, topic))
     row = cursor.fetchall()
@@ -41,7 +41,7 @@ def text_topic_output_db(id_user: int, topic: str):
     return trxt_topic_add
 
 def checking_the_availability_db(id_user: int):
-    db = sqlite3.connect('Database/Chat_history.db', check_same_thread=False)
+    db = sqlite3.connect('/Database/Chat_history.db', check_same_thread=False)
     cursor = db.cursor()
     cursor.execute("SELECT * FROM db_memory WHERE id_user = ?", (id_user,))
     row = cursor.fetchall()
@@ -49,7 +49,7 @@ def checking_the_availability_db(id_user: int):
     return row
 
 def del_last_commit_db(id_user: int, topic: str):
-    db = sqlite3.connect('Database/Chat_history.db', check_same_thread=False)
+    db = sqlite3.connect('/Database/Chat_history.db', check_same_thread=False)
     cursor = db.cursor()
     cursor.execute('DELETE FROM db_memory WHERE id_user = ? AND topic = ?', (id_user, topic))
     db.commit()

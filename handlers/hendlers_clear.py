@@ -19,3 +19,4 @@ async def clear(message: types.Message, bot: Bot) -> None:
 async def cmd_clear(message: "clear", bot: Bot):
    await clear(message, bot)
     
+    

@@ -17,3 +17,5 @@ def pass_generation():
        else:
           pas += characters[random.randrange(len(characters))]
     return pas
+
+

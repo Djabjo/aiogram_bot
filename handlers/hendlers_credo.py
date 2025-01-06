@@ -53,3 +53,5 @@ async def credo_fio(message: Message, state: FSMContext):
         f"pass: должен прийти на корп почту\n"
         )
     await state.clear()
+
+    
