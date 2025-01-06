@@ -6,6 +6,8 @@ RUN /usr/local/bin/python -m pip install --upgrade pip
 COPY pip_file.txt ./
 RUN pip install --no-cache-dir -r pip_file.txt
 
+VOLUME ["/Database"]
+
 COPY . .
 
 CMD ["/bin/bash", "-c", "python Bot_memorizer.py"]
