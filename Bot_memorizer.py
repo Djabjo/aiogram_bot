@@ -6,7 +6,6 @@ from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 
-#токен
 from conf import TOKEN_aiogram
 
 from handlers import hendlers_start_db, hendlers_clear, hendlers_credo
@@ -22,7 +21,7 @@ async def main() -> None:
     dp.include_routers(hendlers_credo.router)
     await dp.start_polling(bot)
 
-#БАЗА
+
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, stream=sys.stdout)
     asyncio.run(main())
