@@ -4,7 +4,8 @@ pipeline {
     environment {
         DOCKER_IMAGE = 'bot-memorizer'
         DOCKER_CONTAINER = 'bot-memorizer'
-
+    }
+     
     stages {
         stage('Checkout') {
             steps {
