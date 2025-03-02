@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 RUN /usr/local/bin/python -m pip install --upgrade pip
 COPY requirements.txt ./
-RUN RUN pip install --no-cache-dir -r requirements.txt --root-user-action=ignore
+RUN pip install --no-cache-dir -r requirements.txt --root-user-action=ignore
 
 VOLUME ["/Database"]
 
