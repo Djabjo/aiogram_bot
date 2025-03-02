@@ -15,7 +15,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t c .'  
+                sh 'docker build -t bot-memorizer .'  
             }
         }
 
