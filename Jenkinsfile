@@ -28,7 +28,7 @@ pipeline {
 
         stage('Run New Container') {
             steps {
-                sh 'docker run -it --name ${DOCKER_CONTAINER} -v /Database:/Database ${DOCKER_IMAGE}:v1.0.0':v1.0.0'
+                sh 'docker run -it --name ${DOCKER_CONTAINER} -v /Database:/Database ${DOCKER_IMAGE}:v1.0.0'
         }
     }
 }
