@@ -10,4 +10,6 @@ VOLUME ["/Database"]
 
 COPY . .
 
+COPY Bot_memorizer.py .
+
 CMD ["/bin/bash", "-c", "python Bot_memorizer.py"]

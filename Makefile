@@ -2,7 +2,7 @@
 docker build -t bot-memorizer .
 
 #запускаем контейнер
-docker run -it --name bot-memorizer -v /Database:/Database bot-memorizer:v1.0.0
+docker run -d --name bot-memorizer -v /Database:/Database bot-memorizer:v1.0.0
 
 #остановка контейнера 
 docker stop bot-memorizer 
