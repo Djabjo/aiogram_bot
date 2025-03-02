@@ -10,7 +10,7 @@ from conf import TOKEN_aiogram
 
 from handlers import hendlers_start_db, hendlers_clear, hendlers_credo
 
-sys.path.append("/database")
+sys.path.append("/Database")
 TOKEN = TOKEN_aiogram
 dp = Dispatcher()
 
