@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKER_IMAGE = 'bot-memorizer'
-        DOCKER_CONTAINER = 'bot-memorizer:v1.0.0'
+        DOCKER_CONTAINER = 'bot-memorizer'
     }
 
     stages {
@@ -15,7 +15,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t ${DOCKER_IMAGE} .'
+                sh 'docker build -t ${DOCKER_IMAGE}:v1.0.0 .'
             }
         }
 
@@ -28,8 +28,7 @@ pipeline {
 
         stage('Run New Container') {
             steps {
-                sh 'docker run -it --name bot-memorizer -v /Database:/Database bot-memorizer:v1.0.0'
-            }
+                sh 'docker run -it --name ${DOCKER_CONTAINER} -v /Database:/Database ${DOCKER_IMAGE}:v1.0.0':v1.0.0'
         }
     }
 }
