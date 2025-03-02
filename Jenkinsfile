@@ -5,11 +5,11 @@ pipeline {
         DOCKER_IMAGE = 'bot-memorizer'
         DOCKER_CONTAINER = 'bot-memorizer'
     }
-     
+
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/Djabjo/aiogram_bot.git'
+                git branch: 'master', url: 'https://github.com/Djabjo/aiogram_bot.git'
             }
         }
 
