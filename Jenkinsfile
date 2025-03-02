@@ -28,7 +28,7 @@ pipeline {
 
         stage('Run New Container') {
             steps {
-                sh 'ocker run -it --name bot-memorizer -v /Database:/Database bot-memorizer'
+                sh 'docker run -it --name bot-memorizer -v /Database:/Database bot-memorizer:v1.0.0'
             }
         }
     }
