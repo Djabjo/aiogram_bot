@@ -1,6 +1,7 @@
 import asyncio
 import logging
 import sys
+import os
 
 from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
@@ -10,7 +11,7 @@ from conf import TOKEN_aiogram
 
 from handlers import hendlers_start_db, hendlers_clear, hendlers_credo
 
-sys.path.append("/Database")
+sys.path.append(os.path.abspath("/Database"))
 TOKEN = TOKEN_aiogram
 dp = Dispatcher()
 
