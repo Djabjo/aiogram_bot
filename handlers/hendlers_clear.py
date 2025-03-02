@@ -18,5 +18,11 @@ async def clear(message: types.Message, bot: Bot) -> None:
 @router.message(Command("clear"))
 async def cmd_clear(message: "clear", bot: Bot):
    await clear(message, bot)
-    
+   await message.answer(
+        f"Я бот, Memorizer\n"
+        f'Добро пожаловать, {message.from_user.first_name}\n'
+        f"/data - для работы с базой данных Memorizer\n"
+        f"/credo - генирация mail, login, pass\n"
+        f"/clear - очистка переписки\n" 
+        ) 
     
