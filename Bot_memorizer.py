@@ -3,7 +3,7 @@ import logging
 import sys
 import os
 
-token_file = '/database/conf.txt'
+token_file = '/Database/conf.txt'
 
 with open(token_file, 'r') as f:
         token = f.read().strip()
