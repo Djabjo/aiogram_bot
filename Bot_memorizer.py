@@ -3,17 +3,18 @@ import logging
 import sys
 import os
 
+token_file = '/database/conf.txt'
+
+with open(token_file, 'r') as f:
+        token = f.read().strip()
 
 from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 
-from conf import TOKEN_aiogram
-
 from handlers import hendlers_start_db, hendlers_clear, hendlers_credo
 
-sys.path.append(os.path.abspath("/Database"))
-TOKEN = TOKEN_aiogram
+TOKEN = token
 dp = Dispatcher()
 
 
