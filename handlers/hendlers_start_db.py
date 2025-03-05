@@ -168,10 +168,6 @@ async def db_texttopic_output(call: CallbackQuery):
         f"{text}",
         reply_markup = completion_text_kb()
         )
-    await call.message.answer(
-        f"вернутся в начало /start"
-        f"\n"
-        )
     
 
 #########################################################################################################   
