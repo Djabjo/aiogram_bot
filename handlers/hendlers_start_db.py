@@ -180,6 +180,13 @@ async def finish_working_db(message: Message):
             selective=True)
         )
 
+@router.message(F.text.lower() == "Редактировать")
+async def edit(message: Message, state: FSMContext):
+    await message.answer(
+        f"В разработке, нажмите /start\n",
+        reply_markup=types.ReplyKeyboardRemove(
+            selective=True)
+        )
 
 @router.message(F.text.lower() == "удалить запись")
 async def finish_working_db(message: Message, state: FSMContext):
