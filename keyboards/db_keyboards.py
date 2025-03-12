@@ -21,6 +21,7 @@ def completion_text_kb() -> ReplyKeyboardMarkup:
     kb = [
         [types.KeyboardButton(text="Завершить работу")],
         [types.KeyboardButton(text="Удалить запись")],
+        [types.KeyboardButton(text="Редактировать")]
     ]
     keyboard = types.ReplyKeyboardMarkup(
         selective=True,
