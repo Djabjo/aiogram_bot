@@ -180,7 +180,7 @@ async def finish_working_db(message: Message):
             selective=True)
         )
 
-@router.message(F.text.lower() == "Редактировать")
+@router.message(F.text.lower() == "редактировать")
 async def edit(message: Message, state: FSMContext):
     await message.answer(
         f"В разработке, нажмите /start\n",
