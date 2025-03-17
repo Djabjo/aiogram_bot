@@ -28,7 +28,7 @@ pipeline {
 
         stage('Run New Container') {
             steps {
-                sh 'docker run -d --name ${DOCKER_CONTAINER} -v /Database:/Database ${DOCKER_IMAGE}'
+                sh 'docker run -d --name ${DOCKER_CONTAINER} --restart=unless-stopped -v /Database:/Database ${DOCKER_IMAGE}'
             }
         }
     }
